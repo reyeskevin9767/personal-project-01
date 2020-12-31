@@ -3,10 +3,16 @@ import { dolls } from 'girlsfrontline-core';
 import SearchBar from './components/SearchBar';
 
 const App = () => {
-
   // Get info about current T-Doll stats and overall info about T-Doll
   const [dollStats, setDollStats] = useState({});
   const [dollInfo, setDollInfo] = useState({});
+  const allDollsNames = [];
+
+  for(let doll in dolls){
+    allDollsNames.push(dolls[doll].codename)
+  }
+  
+
 
   // Pass down onFormSubmit to SearchBar to pass info to other components
   const onFormSubmit = (name, level, favor, dummyLink) => {
@@ -25,10 +31,11 @@ const App = () => {
   console.log(dollInfo);
   console.log(dollStats);
 
+
+
   return (
     <div>
-      
-      <SearchBar onFormSubmit={onFormSubmit} />
+      <SearchBar onFormSubmit={onFormSubmit} allDollsNames={allDollsNames}/>
     </div>
   );
 };

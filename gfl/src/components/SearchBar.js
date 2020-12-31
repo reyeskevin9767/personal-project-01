@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-const SearchBar = ({ onFormSubmit }) => {
+const SearchBar = ({ onFormSubmit, allDollsNames }) => {
   // Setting up hooks for multiple inputs for form
   // Name -> T-Doll's Name
   // Level -> Currrent Level of T-Doll
@@ -15,6 +15,14 @@ const SearchBar = ({ onFormSubmit }) => {
       dollDummyLink: '',
     }
   );
+
+  const renderedList = allDollsNames.map((allDollsNames) => {
+    return (
+      <option key={`${allDollsNames}`} value={`${allDollsNames}`}>
+        {allDollsNames}
+      </option>
+    );
+  });
 
   // When the form is submit, run onFormSubmit from App Component
   const onSubmit = (event) => {
@@ -41,14 +49,19 @@ const SearchBar = ({ onFormSubmit }) => {
     <div>
       <form onSubmit={onSubmit}>
         <label>
-          <input
-            onChange={handleChange}
+          <select
             name="dollName"
             value={userInput.dollName}
-          />
+            onChange={handleChange}
+          >
+            {renderedList}
+          </select>
         </label>
         <label>
           <input
+            type="number"
+            min="1"
+            max="120"
             onChange={handleChange}
             name="dollLevel"
             value={userInput.dollLevel}
@@ -56,6 +69,9 @@ const SearchBar = ({ onFormSubmit }) => {
         </label>
         <label>
           <input
+            type="number"
+            min="1"
+            max="150"
             onChange={handleChange}
             name="dollFriend"
             value={userInput.dollFriend}
@@ -63,6 +79,9 @@ const SearchBar = ({ onFormSubmit }) => {
         </label>
         <label>
           <input
+            type="number"
+            min="1"
+            max="5"
             onChange={handleChange}
             name="dollDummyLink"
             value={userInput.dollDummyLink}
