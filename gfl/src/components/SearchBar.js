@@ -16,6 +16,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
     }
   );
 
+  // Render all the names from the allDollsNames array into seperate options
   const renderedList = allDollsNames.map((allDollsNames) => {
     return (
       <option key={`${allDollsNames}`} value={`${allDollsNames}`}>
@@ -30,9 +31,9 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
 
     onFormSubmit(
       userInput.dollName,
-      parseInt(userInput.dollLevel),
-      parseInt(userInput.dollFriend),
-      parseInt(userInput.dollDummyLink)
+      userInput.dollLevel,
+      userInput.dollFriend,
+      userInput.dollDummyLink
     );
   };
 

@@ -8,11 +8,10 @@ const App = () => {
   const [dollInfo, setDollInfo] = useState({});
   const allDollsNames = [];
 
-  for(let doll in dolls){
-    allDollsNames.push(dolls[doll].codename)
+  // Loop through all dolls to get all T-Doll Names
+  for (let doll in dolls) {
+    allDollsNames.push(dolls[doll].codename);
   }
-  
-
 
   // Pass down onFormSubmit to SearchBar to pass info to other components
   const onFormSubmit = (name, level, favor, dummyLink) => {
@@ -28,14 +27,13 @@ const App = () => {
     setDollStats(doll.stats);
   };
 
+  // Debug Purposes
   console.log(dollInfo);
   console.log(dollStats);
 
-
-
   return (
     <div>
-      <SearchBar onFormSubmit={onFormSubmit} allDollsNames={allDollsNames}/>
+      <SearchBar onFormSubmit={onFormSubmit} allDollsNames={allDollsNames} />
     </div>
   );
 };
