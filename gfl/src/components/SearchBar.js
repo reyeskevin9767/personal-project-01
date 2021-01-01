@@ -9,18 +9,54 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
   const [userInput, setUserInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
-      dollName: '',
-      dollLevel: '',
-      dollFriend: '',
-      dollDummyLink: '',
+      dollName: 'G36',
+      dollLevel: 50,
+      dollFriend: 5,
+      dollDummyLink: 3,
     }
   );
+
+  // Create an array to map through for options in select input
+  const levelRange = [...Array(125).keys()].map((x) => ++x);
+
+  // Create an array to map through for options in select input
+  const friendRange = [...Array(10).keys()].map((x) => ++x);
+
+  // Create an array to map through for options in select input
+  const linkRange = [...Array(10).keys()].map((x) => ++x);
 
   // Render all the names from the allDollsNames array into seperate options
   const renderedList = allDollsNames.map((allDollsNames) => {
     return (
       <option key={`${allDollsNames}`} value={`${allDollsNames}`}>
         {allDollsNames}
+      </option>
+    );
+  });
+
+  // Render all numbers from the levelRange array into seperate options
+  const renderLevelList = levelRange.map((level) => {
+    return (
+      <option key={`${level}`} value={`${level}`}>
+        {level}
+      </option>
+    );
+  });
+
+  // Render all numbers from the friendRange array into seperate options
+  const renderFriendList = friendRange.map((friend) => {
+    return (
+      <option key={`${friend}`} value={`${friend}`}>
+        {friend}
+      </option>
+    );
+  });
+
+  // Render all numbers from the linkRange array into seperate options
+  const renderLinkList = linkRange.map((link) => {
+    return (
+      <option key={`${link}`} value={`${link}`}>
+        {link}
       </option>
     );
   });
@@ -59,34 +95,31 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
           </select>
         </label>
         <label>
-          <input
-            type="number"
-            min="1"
-            max="120"
+          <select
             onChange={handleChange}
             name="dollLevel"
             value={userInput.dollLevel}
-          />
+          >
+            {renderLevelList}
+          </select>
         </label>
         <label>
-          <input
-            type="number"
-            min="1"
-            max="150"
+          <select
             onChange={handleChange}
             name="dollFriend"
             value={userInput.dollFriend}
-          />
+          >
+            {renderFriendList}
+          </select>
         </label>
         <label>
-          <input
-            type="number"
-            min="1"
-            max="5"
+          <select
             onChange={handleChange}
             name="dollDummyLink"
             value={userInput.dollDummyLink}
-          />
+          >
+            {renderLinkList}
+          </select>
         </label>
         <button type="submit">Submit</button>
       </form>
