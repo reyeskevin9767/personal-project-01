@@ -9,10 +9,10 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
   const [userInput, setUserInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
-      dollName: 'G36',
-      dollLevel: 50,
-      dollFriend: 5,
-      dollDummyLink: 3,
+      dollName: 'M9',
+      dollLevel: "50",
+      dollFriend: "5",
+      dollDummyLink: "3",
     }
   );
 
@@ -23,7 +23,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
   const friendRange = [...Array(10).keys()].map((x) => ++x);
 
   // Create an array to map through for options in select input
-  const linkRange = [...Array(10).keys()].map((x) => ++x);
+  const linkRange = [...Array(5).keys()].map((x) => ++x);
 
   // Render all the names from the allDollsNames array into seperate options
   const renderedList = allDollsNames.map((allDollsNames) => {
@@ -75,11 +75,11 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
 
   // Used to handle multiple inputs in form
   const handleChange = (event) => {
-    const name = event.target.name;
+    const newName = event.target.name;
     const newValue = event.target.value;
 
     // Setting value to object key(name) in userInput
-    setUserInput({ [name]: newValue });
+    setUserInput({ [newName]: newValue });
   };
 
   return (
@@ -87,6 +87,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
       <form onSubmit={onSubmit}>
         <label>
           <select
+            id="dName"
             name="dollName"
             value={userInput.dollName}
             onChange={handleChange}
@@ -96,6 +97,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
         </label>
         <label>
           <select
+            id="dLevel"
             onChange={handleChange}
             name="dollLevel"
             value={userInput.dollLevel}
@@ -105,6 +107,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
         </label>
         <label>
           <select
+            id="dFriend"
             onChange={handleChange}
             name="dollFriend"
             value={userInput.dollFriend}
@@ -114,6 +117,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
         </label>
         <label>
           <select
+            id="dLink"
             onChange={handleChange}
             name="dollDummyLink"
             value={userInput.dollDummyLink}
