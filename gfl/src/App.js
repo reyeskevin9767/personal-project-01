@@ -33,7 +33,9 @@ const App = () => {
 
   return (
     <div>
-      <SearchBar onFormSubmit={onFormSubmit} allDollsNames={allDollsNames} />
+    <h1>Found Out the Stats</h1>
+      <SearchBar onFormSubmit={onFormSubmit} allDollsNames={allDollsNames.sort()} />
+      {dollStats.hp}
     </div>
   );
 };
