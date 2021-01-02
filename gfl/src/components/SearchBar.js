@@ -56,7 +56,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
           <select
             id="dName"
             name="dollName"
-            value={userInput.dollName}
+            value={dollName}
             onChange={handleChange}
           >
             {renderOptions(allDollsNames)}
@@ -67,7 +67,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             id="dLevel"
             onChange={handleChange}
             name="dollLevel"
-            value={userInput.dollLevel}
+            value={dollLevel}
           >
             {renderOptions(optionRanges(125))}
           </select>
@@ -77,7 +77,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             id="dFriend"
             onChange={handleChange}
             name="dollFriend"
-            value={userInput.dollFriend}
+            value={dollFriend}
           >
             {renderOptions(optionRanges(150))}
           </select>
@@ -87,7 +87,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             id="dLink"
             onChange={handleChange}
             name="dollDummyLink"
-            value={userInput.dollDummyLink}
+            value={dollDummyLink}
           >
             {renderOptions(optionRanges(5))}
           </select>
