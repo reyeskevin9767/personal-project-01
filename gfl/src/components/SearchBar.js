@@ -1,87 +1,54 @@
 import React, { useReducer } from 'react';
 
 const SearchBar = ({ onFormSubmit, allDollsNames }) => {
-  // Setting up hooks for multiple inputs for form
-  // Name -> T-Doll's Name
-  // Level -> Currrent Level of T-Doll
-  // Friend -> Friendship Level with T-Doll
-  // Dummy Link -> Number of Support Units for T-Doll
+  //* Setting up hooks for multiple inputs for form
   const [userInput, setUserInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
       dollName: 'M9',
-      dollLevel: "50",
-      dollFriend: "5",
-      dollDummyLink: "3",
+      dollLevel: '50',
+      dollFriend: '50',
+      dollDummyLink: '5',
     }
   );
 
-  // Create an array to map through for options in select input
-  const levelRange = [...Array(125).keys()].map((x) => ++x);
+  //* Deconstructed userInput 
+  const { dollName, dollLevel, dollFriend, dollDummyLink } = userInput;
 
-  // Create an array to map through for options in select input
-  const friendRange = [...Array(10).keys()].map((x) => ++x);
+  //* Create an array containing a range of numbers
+  const optionRanges = (amount) => {
+    return [...Array(amount).keys()].map((x) => ++x);
+  };
 
-  // Create an array to map through for options in select input
-  const linkRange = [...Array(5).keys()].map((x) => ++x);
+  //* Renders a list of options using an array
+  const renderOptions = (ranges) => {
+    return ranges.map((range) => {
+      return (
+        <option key={`${range}`} value={`${range}`}>
+          {range}
+        </option>
+      );
+    });
+  };
 
-  // Render all the names from the allDollsNames array into seperate options
-  const renderedList = allDollsNames.map((allDollsNames) => {
-    return (
-      <option key={`${allDollsNames}`} value={`${allDollsNames}`}>
-        {allDollsNames}
-      </option>
-    );
-  });
-
-  // Render all numbers from the levelRange array into seperate options
-  const renderLevelList = levelRange.map((level) => {
-    return (
-      <option key={`${level}`} value={`${level}`}>
-        {level}
-      </option>
-    );
-  });
-
-  // Render all numbers from the friendRange array into seperate options
-  const renderFriendList = friendRange.map((friend) => {
-    return (
-      <option key={`${friend}`} value={`${friend}`}>
-        {friend}
-      </option>
-    );
-  });
-
-  // Render all numbers from the linkRange array into seperate options
-  const renderLinkList = linkRange.map((link) => {
-    return (
-      <option key={`${link}`} value={`${link}`}>
-        {link}
-      </option>
-    );
-  });
-
-  // When the form is submit, run onFormSubmit from App Component
+  //* When the form is submit, run onFormSubmit from App Component
   const onSubmit = (event) => {
     event.preventDefault();
 
-    onFormSubmit(
-      userInput.dollName,
-      userInput.dollLevel,
-      userInput.dollFriend,
-      userInput.dollDummyLink
-    );
+    onFormSubmit(dollName, dollLevel, dollFriend, dollDummyLink);
   };
 
-  // Used to handle multiple inputs in form
+  //* Used to handle multiple inputs in form
   const handleChange = (event) => {
-    const newName = event.target.name;
-    const newValue = event.target.value;
 
-    // Setting value to object key(name) in userInput
-    setUserInput({ [newName]: newValue });
+    // Destructing name and value from event
+    const {target: {name, value}} = event;
+
+    // Dynamically set name to value
+    setUserInput({ [name]: value });
   };
 
+  //* JSX
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -92,7 +59,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             value={userInput.dollName}
             onChange={handleChange}
           >
-            {renderedList}
+            {renderOptions(allDollsNames)}
           </select>
         </label>
         <label>
@@ -102,7 +69,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             name="dollLevel"
             value={userInput.dollLevel}
           >
-            {renderLevelList}
+            {renderOptions(optionRanges(125))}
           </select>
         </label>
         <label>
@@ -112,7 +79,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             name="dollFriend"
             value={userInput.dollFriend}
           >
-            {renderFriendList}
+            {renderOptions(optionRanges(150))}
           </select>
         </label>
         <label>
@@ -122,7 +89,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             name="dollDummyLink"
             value={userInput.dollDummyLink}
           >
-            {renderLinkList}
+            {renderOptions(optionRanges(5))}
           </select>
         </label>
         <button type="submit">Submit</button>
