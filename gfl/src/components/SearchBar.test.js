@@ -50,8 +50,34 @@ describe('SearchBar Component', () => {
     expect(wrapper.find('#dLevel').props().value).toBe('3')
   })
   
+  it('select two different options for T-Doll Friendship', async () => {
+    wrapper.find('#dFriend').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dFriend').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dFriend').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dFriend').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dFriend').simulate('change', {  target: { name: 'dollFriend', value: '4' }});
+    expect(wrapper.find('#dFriend').props().value).toBe('4')
+    wrapper.find('#dFriend').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dFriend').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dFriend').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dFriend').simulate('change', {  target: { name: 'dollFriend', value: '7' }});
+    expect(wrapper.find('#dFriend').props().value).toBe('7')
+  })
 
 
+  it('select first and last option of T-Doll Dummy Links', async () => {
+    wrapper.find('#dLink').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dLink').simulate('change', {  target: { name: 'dollDummyLink', value: '1' }});
+    expect(wrapper.find('#dLink').props().value).toBe('1')
+
+    wrapper.find('#dLink').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dLink').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dLink').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dLink').simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
+    wrapper.find('#dLink').simulate('change', {  target: { name: 'dollDummyLink', value: '5' }});
+    expect(wrapper.find('#dLink').props().value).toBe('5')
+
+  })
 
   
 });
