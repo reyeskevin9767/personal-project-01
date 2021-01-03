@@ -42,7 +42,7 @@ describe('SearchBar Component', () => {
     expect(wrapper.find('#dLink option').length).toBe(5);
   });
 
-  // Check to see if select input for T-Doll names changes the state
+  // Check to see if select input for T-Doll names changes the value
   it('select the two options for T-Doll Names', async () => {
     wrapper
       .find('#dName')
@@ -60,7 +60,7 @@ describe('SearchBar Component', () => {
     expect(wrapper.find('#dName').props().value).toBe('G36');
   });
 
-  // Check to see if select input for T-Doll levels changes the state
+  // Check to see if select input for T-Doll levels changes the value
   it('select first three options for T-Doll Levels', async () => {
     wrapper
       .find('#dLevel')
@@ -87,7 +87,7 @@ describe('SearchBar Component', () => {
     expect(wrapper.find('#dLevel').props().value).toBe('3');
   });
 
-  // Check to see if select input for T-Doll Friendship changes the state
+  // Check to see if select input for T-Doll Friendship changes the value
   it('select two different options for T-Doll Friendship', async () => {
     wrapper
       .find('#dFriend')
@@ -120,7 +120,7 @@ describe('SearchBar Component', () => {
     expect(wrapper.find('#dFriend').props().value).toBe('7');
   });
 
-  // Check to see if select input for T-Doll Dummy Links changes the state
+  // Check to see if select input for T-Doll Dummy Links changes the value
   it('select first and last option of T-Doll Dummy Links', async () => {
     wrapper
       .find('#dLink')
