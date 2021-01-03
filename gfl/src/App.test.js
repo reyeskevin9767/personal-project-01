@@ -4,7 +4,7 @@ import App from './App';
 import renderer from 'react-test-renderer';
 
 //* Test App
-describe.skip('App Starting Up', () => {
+describe('App Starting Up', () => {
   // Test if app runs
   it('renders without crashing', () => {
     shallow(<App />);

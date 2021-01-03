@@ -1452,7 +1452,7 @@ exports[`SearchBar Component basic snapshot 1`] = `
       </select>
     </label>
     <button
-      type="sumbit"
+      type="submit"
     >
       Submit
     </button>

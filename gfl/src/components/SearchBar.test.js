@@ -5,7 +5,7 @@ import { dolls } from 'girlsfrontline-core';
 import renderer from 'react-test-renderer';
 
 //* Testing the the search bar
-describe.skip('SearchBar Component', () => {
+describe('SearchBar Component', () => {
   // Setting up Searchbar with fake props
   let wrapper;
   beforeEach(() => {
