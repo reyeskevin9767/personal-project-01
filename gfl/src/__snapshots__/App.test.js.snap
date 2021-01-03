@@ -3356,6 +3356,7 @@ exports[`App Starting Up should render correctly 1`] = `
         </select>
       </label>
       <button
+        id="submitButton"
         type="submit"
       >
         Submit

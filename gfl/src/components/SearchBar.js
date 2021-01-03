@@ -12,7 +12,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
     }
   );
 
-  //* Deconstructed userInput 
+  //* Deconstructed userInput
   const { dollName, dollLevel, dollFriend, dollDummyLink } = userInput;
 
   //* Create an array containing a range of numbers
@@ -40,9 +40,10 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
 
   //* Used to handle multiple inputs in form
   const handleChange = (event) => {
-
     // Destructing name and value from event
-    const {target: {name, value}} = event;
+    const {
+      target: { name, value },
+    } = event;
 
     // Dynamically set name to value
     setUserInput({ [name]: value });
@@ -92,7 +93,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             {renderOptions(optionRanges(5))}
           </select>
         </label>
-        <button type="submit">Submit</button>
+        <button id="submitButton" type="submit">Submit</button>
       </form>
     </div>
   );
