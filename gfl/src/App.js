@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { dolls } from 'girlsfrontline-core';
 import SearchBar from './components/SearchBar';
+import Dollstats from './components/DollStats';
+import DollStats from './components/DollStats';
 
 const App = () => {
   // Get info about current T-Doll stats and overall info about T-Doll
@@ -33,9 +35,12 @@ const App = () => {
 
   return (
     <div>
-    <h1>Found Out the Stats</h1>
-      <SearchBar onFormSubmit={onFormSubmit} allDollsNames={allDollsNames.sort()} />
-      {dollStats.hp}
+      <h1>Found Out the Stats</h1>
+      <SearchBar
+        onFormSubmit={onFormSubmit}
+        allDollsNames={allDollsNames.sort()}
+      />
+      <DollStats />
     </div>
   );
 };
