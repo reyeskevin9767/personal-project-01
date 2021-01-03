@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { dolls } from 'girlsfrontline-core';
 import SearchBar from './components/SearchBar';
-import Dollstats from './components/DollStats';
 import DollStats from './components/DollStats';
+
+// Standard format -> 100 Level -> 50 Friendship -> Any DummyLink (Hp Only Affected)
 
 const App = () => {
   // Get info about current T-Doll stats and overall info about T-Doll
@@ -15,14 +16,18 @@ const App = () => {
     allDollsNames.push(dolls[doll].codename);
   }
 
+  useEffect(() => {
+    onFormSubmit('M9', 100, 50, 5);
+  }, []);
+
   // Pass down onFormSubmit to SearchBar to pass info to other components
   const onFormSubmit = (name, level, favor, dummyLink) => {
     const doll = dolls.find(({ codename }) => codename === name);
 
     // Current T-Doll Stats
     doll.level = level;
-    doll.favor = favor;
     doll.dummyLink = dummyLink;
+    doll.favor = favor;
 
     // Storing T-Doll Info
     setDollInfo(doll);
@@ -30,8 +35,8 @@ const App = () => {
   };
 
   // Debug Purposes
-  console.log(dollInfo);
-  console.log(dollStats);
+  // console.log(dollInfo.dummyLink);
+  // console.log(dollStats);
 
   return (
     <div>
@@ -40,7 +45,7 @@ const App = () => {
         onFormSubmit={onFormSubmit}
         allDollsNames={allDollsNames.sort()}
       />
-      <DollStats />
+      <DollStats dollStats={dollStats} dummyLink={dollInfo.dummyLink} />
     </div>
   );
 };

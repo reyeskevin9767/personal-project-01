@@ -6,9 +6,9 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
     (state, newState) => ({ ...state, ...newState }),
     {
       dollName: 'M9',
-      dollLevel: '50',
-      dollFriend: '50',
-      dollDummyLink: '5',
+      dollLevel: 100,
+      dollFriend: 50,
+      dollDummyLink: 5,
     }
   );
 
@@ -31,7 +31,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
     });
   };
 
-  //* When the form is submit, run onFormSubmit from App Component
+  //* When the select option is change, onSubmit is called
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -93,7 +93,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             {renderOptions(optionRanges(5))}
           </select>
         </label>
-        <button id="submitButton" type="submit">Submit</button>
+        <button type="sumbit">Submit</button> 
       </form>
     </div>
   );
