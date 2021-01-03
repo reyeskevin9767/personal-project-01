@@ -36,7 +36,7 @@ const App = () => {
 
   // Debug Purposes
   // console.log(dollInfo.dummyLink);
-  // console.log(dollStats);
+  console.log(dollStats);
 
   return (
     <div>

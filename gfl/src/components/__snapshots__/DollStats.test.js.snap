@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing DollStats component test if screenshot matches 1`] = `
+<div>
+  <p>
+    Health - 
+    380
+  </p>
+  <p>
+    Damage - 
+    29
+  </p>
+  <p>
+    Evasion - 
+    66
+  </p>
+  <p>
+    Accuracy - 
+    56
+  </p>
+  <p>
+    Rate of Fire - 
+    61
+  </p>
+  <p>
+    Movement Speed - 
+    15
+  </p>
+  <p>
+    Armor - 
+    0
+    %
+  </p>
+  <p>
+    Crit. Rate - 
+    20
+    %
+  </p>
+  <p>
+    Crit. Damage - 
+    50
+    %
+  </p>
+  <p>
+    Armor Piercing - 
+    15
+  </p>
+</div>
+`;

@@ -93,7 +93,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             {renderOptions(optionRanges(5))}
           </select>
         </label>
-        <button type="sumbit">Submit</button> 
+        <button type="submit">Submit</button> 
       </form>
     </div>
   );
