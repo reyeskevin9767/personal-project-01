@@ -1933,7 +1933,7 @@ exports[`App Starting Up should render correctly 1`] = `
           id="dLevel"
           name="dollLevel"
           onChange={[Function]}
-          value="50"
+          value={100}
         >
           <option
             value="1"
@@ -2567,7 +2567,7 @@ exports[`App Starting Up should render correctly 1`] = `
           id="dFriend"
           name="dollFriend"
           onChange={[Function]}
-          value="50"
+          value={50}
         >
           <option
             value="1"
@@ -3326,7 +3326,7 @@ exports[`App Starting Up should render correctly 1`] = `
           id="dLink"
           name="dollDummyLink"
           onChange={[Function]}
-          value="5"
+          value={5}
         >
           <option
             value="1"
@@ -3356,12 +3356,49 @@ exports[`App Starting Up should render correctly 1`] = `
         </select>
       </label>
       <button
-        id="submitButton"
-        type="submit"
+        type="sumbit"
       >
         Submit
       </button>
     </form>
+  </div>
+  <div>
+    <p>
+      Health - 
+      NaN
+    </p>
+    <p>
+      Damage - 
+    </p>
+    <p>
+      Evasion - 
+    </p>
+    <p>
+      Accuracy - 
+    </p>
+    <p>
+      Rate of Fire - 
+    </p>
+    <p>
+      Movement Speed - 
+    </p>
+    <p>
+      Armor - 
+      0
+      %
+    </p>
+    <p>
+      Crit. Rate - 
+      %
+    </p>
+    <p>
+      Crit. Damage - 
+      50
+      %
+    </p>
+    <p>
+      Armor Piercing - 
+    </p>
   </div>
 </div>
 `;

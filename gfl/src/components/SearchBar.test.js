@@ -29,9 +29,9 @@ describe('SearchBar Component', () => {
   // Check the default values for each select input
   it('render the default options', () => {
     expect(wrapper.find('#dName').props().value).toBe('M9');
-    expect(wrapper.find('#dLevel').props().value).toBe('50');
-    expect(wrapper.find('#dFriend').props().value).toBe('50');
-    expect(wrapper.find('#dLink').props().value).toBe('5');
+    expect(wrapper.find('#dLevel').props().value).toBe(100);
+    expect(wrapper.find('#dFriend').props().value).toBe(50);
+    expect(wrapper.find('#dLink').props().value).toBe(5);
   });
 
   // Check to see if each select printed out the max options
