@@ -16,20 +16,25 @@ const DollInfo = ({ dollInfo, moreInfo }) => {
 
   console.log(dollInfo);
 
-  const renderContent = () => {
+  const renderedArray = (dollinfo, infoOfDoll) => {
+    return infoOfDoll.map((info, index) => {
+      return <p key={`${index}`}>{dollinfo(info.description)}</p>;
+    });
+  };
 
-    if(Object.keys(dollInfo).length !== 0 ){
-         return <div>
-      <p>
-        {dollInfo.codename} - {dollInfo.type}
-      </p>
-      <p>Construction Time - {convertMinsToHour(dollInfo.buildTime)}</p>
-      <p>{findDollInfo(dollInfo.obtain[0].description)}</p>
-      <p>{findDollInfo(dollInfo.obtain[1].description)}</p>
-    </div>; 
-    }
-    else{
-      return <div>Loading</div>
+  const renderContent = () => {
+    if (Object.keys(dollInfo).length !== 0) {
+      return (
+        <div>
+          <p>
+            {dollInfo.codename} - {dollInfo.type}
+          </p>
+          <p>Construction Time - {convertMinsToHour(dollInfo.buildTime)}</p>
+          {renderedArray(findDollInfo, dollInfo.obtain)}
+        </div>
+      );
+    } else {
+      return <div>Loading</div>;
     }
   };
 
