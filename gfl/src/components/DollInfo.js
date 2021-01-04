@@ -5,6 +5,11 @@ const DollInfo = ({ dollInfo, moreInfo }) => {
     return moreInfo[info];
   };
 
+  const findDollskill = (skill) => {
+    const skill1 = dollInfo.skill1
+    return skill1[skill];
+  };
+
   const convertMinsToHour = (seconds) => {
     const convertSecondsToMinutes = seconds / 60;
     let hour = Math.floor(convertSecondsToMinutes / 60);
@@ -15,12 +20,22 @@ const DollInfo = ({ dollInfo, moreInfo }) => {
   };
 
   console.log(dollInfo);
+  // Can use function parameter as object proptery with []
 
-  const renderedArray = (dollinfo, infoOfDoll) => {
+  const renderedArray = (dollinfo, infoOfDoll, newInfo) => {
     return infoOfDoll.map((info, index) => {
-      return <p key={`${index}`}>{dollinfo(info.description)}</p>;
+      return <p key={`${index}`}>{dollinfo(info[newInfo])}</p>;
     });
   };
+  const renderedArray2 = (infoOfDoll) => {
+    return infoOfDoll.map((info, index) => {
+      return <p key={`${index}`}>{info}</p>;
+    });
+  };
+
+  const newcode = dollInfo.effect
+  const newcode2 = newcode.gridEffect;
+
 
   const renderContent = () => {
     if (Object.keys(dollInfo).length !== 0) {
@@ -30,7 +45,15 @@ const DollInfo = ({ dollInfo, moreInfo }) => {
             {dollInfo.codename} - {dollInfo.type}
           </p>
           <p>Construction Time - {convertMinsToHour(dollInfo.buildTime)}</p>
-          {renderedArray(findDollInfo, dollInfo.obtain)}
+          {renderedArray(findDollInfo, dollInfo.obtain, 'description')}
+          {renderedArray(findDollInfo, dollInfo.skins, 'name')}
+          {renderedArray2(dollInfo.equip1)}
+          {renderedArray2(dollInfo.equip2)}
+          {renderedArray2(newcode.effectPos)}
+          {newcode.effectCenter}
+          {/* {newcode2.pow} Instead of this do findDollSkill similar */}
+          {newcode2.dodge}
+          {findDollskill('codename')}
         </div>
       );
     } else {
