@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { dolls } from 'girlsfrontline-core';
 import SearchBar from './components/SearchBar';
 import DollStats from './components/DollStats';
+import DollInfo from './components/DollInfo';
+import moreInfo from './gfcore.json';
+
 
 // Standard format -> 100 Level -> 50 Friendship -> Any DummyLink (Hp Only Affected)
 
@@ -35,7 +38,7 @@ const App = () => {
   };
 
   // Debug Purposes
-  // console.log(dollInfo.dummyLink);
+  // console.log(dollInfo.name);
   // console.log(dollStats);
 
   return (
@@ -46,6 +49,7 @@ const App = () => {
         allDollsNames={allDollsNames.sort()}
       />
       <DollStats dollStats={dollStats} dummyLink={dollInfo.dummyLink} />
+      <DollInfo dollInfo={dollInfo} moreInfo={moreInfo}/>
     </div>
   );
 };
