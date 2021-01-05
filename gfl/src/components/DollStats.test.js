@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import DollStats from './DollStats';
 
 //* Testing the DollStats Component
-describe.skip('testing DollStats component', () => {
+describe('testing DollStats component', () => {
   it('test if screenshot matches', () => {
     const dollStats = {
       armorPiercing: 15,

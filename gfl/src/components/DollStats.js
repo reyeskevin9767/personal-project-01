@@ -1,6 +1,8 @@
 import React from 'react';
 
 const DollStats = ({ dollStats, dummyLink }) => {
+//* Deconstrcuted all values from dollStats including adding ones specific
+//* to certain T-Dolls
   const {
     armor = 0,
     armorPiercing,

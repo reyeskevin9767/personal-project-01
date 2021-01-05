@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { dolls } from 'girlsfrontline-core';
 import SearchForm from './components/SearchForm';
 import DollStats from './components/DollStats';
-import DollInfo from './components/DollInfo';
-import moreInfo from './gfcore.json';
+import DollDetails from './components/DollDetails';
+import InDepthDetails from './gfcore.json';
 
 const App = () => {
   //* Store the stats and details about T-Doll
@@ -47,7 +47,7 @@ const App = () => {
       <SearchForm onFormSubmit={onFormSubmit} allDollsNames={allDollsNames.sort()}
       />
       <DollStats dollStats={dollStats} dummyLink={dollDetails.dummyLink} />
-      {/* <DollInfo dollInfo={dollInfo} moreInfo={moreInfo}/> */}
+      <DollDetails dollDetails={dollDetails} inDepthDetails={InDepthDetails}/>
     </div>
   );
 };

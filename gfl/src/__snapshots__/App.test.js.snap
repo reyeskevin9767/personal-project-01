@@ -11,7 +11,7 @@ exports[`App Starting Up should render correctly 1`] = `
     >
       <label>
         <select
-          id="dName"
+          id="selectName"
           name="dollName"
           onChange={[Function]}
           value="M9"
@@ -1930,7 +1930,7 @@ exports[`App Starting Up should render correctly 1`] = `
       </label>
       <label>
         <select
-          id="dLevel"
+          id="selectLevel"
           name="dollLevel"
           onChange={[Function]}
           value={100}
@@ -2564,8 +2564,8 @@ exports[`App Starting Up should render correctly 1`] = `
       </label>
       <label>
         <select
-          id="dFriend"
-          name="dollFriend"
+          id="selectFriendship"
+          name="dollFriendship"
           onChange={[Function]}
           value={50}
         >
@@ -3323,7 +3323,7 @@ exports[`App Starting Up should render correctly 1`] = `
       </label>
       <label>
         <select
-          id="dLink"
+          id="selectLink"
           name="dollDummyLink"
           onChange={[Function]}
           value={5}
