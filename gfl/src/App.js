@@ -1,55 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { dolls } from 'girlsfrontline-core';
-import SearchBar from './components/SearchBar';
+import SearchForm from './components/SearchForm';
 import DollStats from './components/DollStats';
 import DollInfo from './components/DollInfo';
 import moreInfo from './gfcore.json';
 
-
-// Standard format -> 100 Level -> 50 Friendship -> Any DummyLink (Hp Only Affected)
-
 const App = () => {
-  // Get info about current T-Doll stats and overall info about T-Doll
+  //* Store the stats and details about T-Doll
   const [dollStats, setDollStats] = useState({});
-  const [dollInfo, setDollInfo] = useState({});
+  const [dollDetails, setDollDetails] = useState({});
+
+  //* Create an array contaning all T-Dolls names
   const allDollsNames = [];
 
-  // Loop through all dolls to get all T-Doll Names
   for (let doll in dolls) {
     allDollsNames.push(dolls[doll].codename);
   }
 
+  //* After first render, call onFormSubmit to have a default T-Doll
   useEffect(() => {
     onFormSubmit('M9', 100, 50, 5);
   }, []);
 
-  // Pass down onFormSubmit to SearchBar to pass info to other components
-  const onFormSubmit = (name, level, favor, dummyLink) => {
+  //* Function -> Pass down to child, finds the specific T-doll
+  //* along with calculating stats and getting all T-Doll's details
+
+  const onFormSubmit = (name, level, friendship, dummyLink) => {
     const doll = dolls.find(({ codename }) => codename === name);
 
-    // Current T-Doll Stats
+    // Calcuate stats of T-Doll at given level, dummyLinks, and friendship
     doll.level = level;
     doll.dummyLink = dummyLink;
-    doll.favor = favor;
+    doll.favor = friendship;
 
-    // Storing T-Doll Info
-    setDollInfo(doll);
+    // Store stats and details of T-Doll    
+    setDollDetails(doll);
     setDollStats(doll.stats);
+
   };
 
-  // Debug Purposes
-  // console.log(dollInfo.name);
-  // console.log(dollStats);
+  console.log(dollStats)
 
   return (
     <div>
       <h1>Found Out the Stats</h1>
-      <SearchBar
-        onFormSubmit={onFormSubmit}
-        allDollsNames={allDollsNames.sort()}
+      <SearchForm onFormSubmit={onFormSubmit} allDollsNames={allDollsNames.sort()}
       />
-      <DollStats dollStats={dollStats} dummyLink={dollInfo.dummyLink} />
-      <DollInfo dollInfo={dollInfo} moreInfo={moreInfo}/>
+      <DollStats dollStats={dollStats} dummyLink={dollDetails.dummyLink} />
+      {/* <DollInfo dollInfo={dollInfo} moreInfo={moreInfo}/> */}
     </div>
   );
 };

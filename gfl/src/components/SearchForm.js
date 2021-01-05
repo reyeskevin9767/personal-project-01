@@ -1,19 +1,20 @@
 import React, { useReducer } from 'react';
 
-const SearchBar = ({ onFormSubmit, allDollsNames }) => {
-  //* Setting up hooks for multiple inputs for form
+const SearchForm = ({ onFormSubmit, allDollsNames }) => {
+  //* Using useReducer hook to store inputs from form
   const [userInput, setUserInput] = useReducer(
+    // Matching the default values
     (state, newState) => ({ ...state, ...newState }),
     {
       dollName: 'M9',
       dollLevel: 100,
-      dollFriend: 50,
+      dollFriendship: 50,
       dollDummyLink: 5,
     }
   );
 
   //* Deconstructed userInput
-  const { dollName, dollLevel, dollFriend, dollDummyLink } = userInput;
+  const { dollName, dollLevel, dollFriendship, dollDummyLink } = userInput;
 
   //* Create an array containing a range of numbers
   const optionRanges = (amount) => {
@@ -21,24 +22,24 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
   };
 
   //* Renders a list of options using an array
-  const renderOptions = (ranges) => {
-    return ranges.map((range) => {
+  const renderOptions = (option) => {
+    return option.map((choice) => {
       return (
-        <option key={`${range}`} value={`${range}`}>
-          {range}
+        <option key={`${choice}`} value={`${choice}`}>
+          {choice}
         </option>
       );
     });
   };
 
-  //* When the select option is change, onSubmit is called
+  //* Send values from form into onFormSubmit function
   const onSubmit = (event) => {
     event.preventDefault();
 
-    onFormSubmit(dollName, dollLevel, dollFriend, dollDummyLink);
+    onFormSubmit(dollName, dollLevel, dollFriendship, dollDummyLink);
   };
 
-  //* Used to handle multiple inputs in form
+  //* Used to handle multiple inputs in form when they change
   const handleChange = (event) => {
     // Destructing name and value from event
     const {
@@ -55,7 +56,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
       <form onSubmit={onSubmit}>
         <label>
           <select
-            id="dName"
+            id="selectName"
             name="dollName"
             value={dollName}
             onChange={handleChange}
@@ -65,7 +66,7 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
         </label>
         <label>
           <select
-            id="dLevel"
+            id="selectLevel"
             onChange={handleChange}
             name="dollLevel"
             value={dollLevel}
@@ -75,17 +76,17 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
         </label>
         <label>
           <select
-            id="dFriend"
+            id="selectFriendship"
             onChange={handleChange}
-            name="dollFriend"
-            value={dollFriend}
+            name="dollFriendship"
+            value={dollFriendship}
           >
             {renderOptions(optionRanges(150))}
           </select>
         </label>
         <label>
           <select
-            id="dLink"
+            id="selectLink"
             onChange={handleChange}
             name="dollDummyLink"
             value={dollDummyLink}
@@ -93,10 +94,10 @@ const SearchBar = ({ onFormSubmit, allDollsNames }) => {
             {renderOptions(optionRanges(5))}
           </select>
         </label>
-        <button type="submit">Submit</button> 
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
 };
 
-export default SearchBar;
+export default SearchForm;
