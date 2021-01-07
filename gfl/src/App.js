@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { dolls } from 'girlsfrontline-core';
-import SearchForm from './components/SearchForm';
+import SelectStats from './components/SelectStats';
 import DollStats from './components/DollStats';
-import DollDetails from './components/DollDetails';
-import InDepthDetails from './gfcore.json';
+// import DollDetails from './components/DollDetails';
+// import InDepthDetails from './gfcore.json';
 
 const App = () => {
   //* Store the stats and details about T-Doll
@@ -24,30 +24,28 @@ const App = () => {
 
   //* Function -> Pass down to child, finds the specific T-doll
   //* along with calculating stats and getting all T-Doll's details
-
   const onFormSubmit = (name, level, friendship, dummyLink) => {
     const doll = dolls.find(({ codename }) => codename === name);
 
-    // Calcuate stats of T-Doll at given level, dummyLinks, and friendship
     doll.level = level;
     doll.dummyLink = dummyLink;
     doll.favor = friendship;
 
-    // Store stats and details of T-Doll    
     setDollDetails(doll);
     setDollStats(doll.stats);
-
   };
 
-  console.log(dollStats)
+  console.log(dollStats);
 
   return (
     <div>
       <h1>Found Out the Stats</h1>
-      <SearchForm onFormSubmit={onFormSubmit} allDollsNames={allDollsNames.sort()}
+      <SelectStats
+        onFormSubmit={onFormSubmit}
+        allDollsNames={allDollsNames.sort()}
       />
       <DollStats dollStats={dollStats} dummyLink={dollDetails.dummyLink} />
-      <DollDetails dollDetails={dollDetails} inDepthDetails={InDepthDetails}/>
+      {/* <DollDetails dollDetails={dollDetails} inDepthDetails={InDepthDetails}/> */}
     </div>
   );
 };
