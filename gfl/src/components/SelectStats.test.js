@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import SearchForm from './SearchForm';
+import SelectStats from './SelectStats';
 import { dolls } from 'girlsfrontline-core';
 import renderer from 'react-test-renderer';
 
 //* Testing the the search bar
-describe('SearchBar Component', () => {
+describe('SelectStats Component', () => {
   // Setting up Searchbar with fake props
   let wrapper;
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('SearchBar Component', () => {
     };
 
     wrapper = mount(
-      <SearchForm allDollsNames={allDollNames} onFormSubmit={onFormSubmit} />
+      <SelectStats allDollsNames={allDollNames} onFormSubmit={onFormSubmit} />
     );
   });
 
@@ -42,7 +42,7 @@ describe('SearchBar Component', () => {
       return doll;
     };
     const component = renderer.create(
-      <SearchForm allDollsNames={allDollNames} onFormSubmit={onFormSubmit} />
+      <SelectStats allDollsNames={allDollNames} onFormSubmit={onFormSubmit} />
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
@@ -59,7 +59,7 @@ describe('SearchBar Component', () => {
   it('check to see if the all options were rendered', () => {
     expect(wrapper.find('#selectName option').length).toBe(2);
     expect(wrapper.find('#selectLevel option').length).toBe(125);
-    expect(wrapper.find('#selectFriendship option').length).toBe(150);
+    expect(wrapper.find('#selectFriendship option').length).toBe(200);
     expect(wrapper.find('#selectLink option').length).toBe(5);
   });
 
